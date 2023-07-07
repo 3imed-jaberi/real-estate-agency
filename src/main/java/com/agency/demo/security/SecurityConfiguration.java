@@ -30,6 +30,7 @@ public class SecurityConfiguration {
         .disable()
         .authorizeHttpRequests()
         .antMatchers(
+            "/ws/**",
             "/webjars/**",
             "/v2/api-docs",
             "/swagger-resources/**",
