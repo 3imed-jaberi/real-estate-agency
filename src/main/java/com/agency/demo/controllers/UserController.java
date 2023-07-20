@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.agency.demo.entities.User;
 import com.agency.demo.services.UserService;
 
+import io.swagger.annotations.ApiImplicitParam;
+
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -25,6 +27,7 @@ public class UserController {
   UserService userService;
 
   @GetMapping()
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<List<User>> handleGetAllUsersRequest() {
     List<User> result = this.userService.findAll();
     if (result.isEmpty()) {
@@ -35,6 +38,7 @@ public class UserController {
   }
 
   @GetMapping("/{userId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<User> handleGetSingleUserRequest(@PathVariable Long userId) {
     User result = this.userService.findById(userId);
     if (result == null) {
@@ -44,12 +48,14 @@ public class UserController {
   }
 
   @PostMapping()
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<User> handleCreateUserRequest(@RequestBody User User) {
     User result = this.userService.save(User);
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
   @PutMapping(value = "/{userId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<User> handleUpdateUserRequest(
       @PathVariable Long userId,
       @RequestBody User User) {
@@ -63,6 +69,7 @@ public class UserController {
   }
 
   @DeleteMapping(value = "/{userId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<User> handleDeleteUserRequest(@PathVariable Long userId) {
     this.userService.delete(userId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);

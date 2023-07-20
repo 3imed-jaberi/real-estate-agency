@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.agency.demo.entities.Annonce;
 import com.agency.demo.services.AnnonceService;
 
+import io.swagger.annotations.ApiImplicitParam;
+
 @RestController
 @RequestMapping("/api/v1/annonces")
 public class AnnonceController {
@@ -25,6 +27,7 @@ public class AnnonceController {
   AnnonceService annonceService;
 
   @GetMapping()
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<List<Annonce>> handleGetAllAnnoncesRequest() {
     List<Annonce> result = this.annonceService.findAll();
     if (result.isEmpty()) {
@@ -35,6 +38,7 @@ public class AnnonceController {
   }
 
   @GetMapping("/{annonceId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<Annonce> handleGetSingleAnnonceRequest(@PathVariable Long annonceId) {
     Annonce result = this.annonceService.findById(annonceId);
     if (result == null) {
@@ -44,12 +48,14 @@ public class AnnonceController {
   }
 
   @PostMapping()
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<Annonce> handleCreateAnnonceRequest(@RequestBody Annonce annonce) {
     Annonce result = this.annonceService.save(annonce);
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
   @PutMapping(value = "/{annonceId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<Annonce> handleUpdateAnnonceRequest(
       @PathVariable Long annonceId,
       @RequestBody Annonce annonce) {
@@ -63,6 +69,7 @@ public class AnnonceController {
   }
 
   @DeleteMapping(value = "/{annonceId}")
+  @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
   public ResponseEntity<Annonce> handleDeleteAnnonceRequest(@PathVariable Long annonceId) {
     this.annonceService.delete(annonceId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
