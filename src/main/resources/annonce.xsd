@@ -7,7 +7,7 @@
   <xs:element name="AnnonceRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="id" type="xs:string"/>
+        <xs:element name="id" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -15,23 +15,23 @@
   <xs:element name="AnnonceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="AnnonceDetails" type="tns:AnnonceDetails"/>
+        <xs:element name="AnnonceDetails" type="tns:AnnonceDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
 
   <xs:complexType name="AnnonceDetails">
     <xs:sequence>
-      <xs:element name="id" type="xs:string"/>
-      <xs:element name="surface" type="xs:string"/>
-      <xs:element name="roomsNumber" type="xs:string"/>
-      <xs:element name="location" type="xs:string"/>
-      <xs:element name="price" type="xs:string"/>
-      <xs:element name="photoUrl" type="xs:string"/>
-      <xs:element name="description" type="xs:string"/>
-      <xs:element name="phoneNumber" type="xs:string"/>
-      <xs:element name="operation" type="xs:string"/>
-      <xs:element name="available" type="xs:string"/>
+      <xs:element name="id" type="xs:string" />
+      <xs:element name="surface" type="xs:string" />
+      <xs:element name="roomsNumber" type="xs:string" />
+      <xs:element name="location" type="xs:string" />
+      <xs:element name="price" type="xs:string" />
+      <xs:element name="photoUrl" type="xs:string" />
+      <xs:element name="description" type="xs:string" />
+      <xs:element name="phoneNumber" type="xs:string" />
+      <xs:element name="operation" type="xs:string" />
+      <xs:element name="available" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

@@ -23,10 +23,10 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     return new ServletRegistrationBean(servlet, "/ws/*");
   }
 
-  @Bean
+  @Bean(name = "annonces")
   public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema annoncesSchema) {
     DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-    wsdl11Definition.setPortTypeName("AnnoncesPort");
+    wsdl11Definition.setPortTypeName("AnnoncePort");
     wsdl11Definition.setLocationUri("/ws");
     wsdl11Definition.setTargetNamespace("http://www.generated.com/annonce");
     wsdl11Definition.setSchema(annoncesSchema);
