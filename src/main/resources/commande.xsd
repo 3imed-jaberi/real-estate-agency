@@ -1,0 +1,29 @@
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://www.generated.com/commande"
+  targetNamespace="http://www.generated.com/commande"
+  elementFormDefault="qualified"
+>
+  <xs:element name="CommandeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CommandeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CommandeDetails" type="tns:CommandeDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="CommandeDetails">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" />
+      <xs:element name="title" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
