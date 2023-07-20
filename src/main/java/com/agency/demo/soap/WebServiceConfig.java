@@ -24,17 +24,17 @@ public class WebServiceConfig extends WsConfigurerAdapter {
   }
 
   @Bean
-  public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema annoncesSchema) {
+  public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema commandesSchema) {
     DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-    wsdl11Definition.setPortTypeName("AnnoncesPort");
+    wsdl11Definition.setPortTypeName("commandesPort");
     wsdl11Definition.setLocationUri("/ws");
-    wsdl11Definition.setTargetNamespace("http://www.generated.com/annonce");
-    wsdl11Definition.setSchema(annoncesSchema);
+    wsdl11Definition.setTargetNamespace("http://www.generated.com/commande");
+    wsdl11Definition.setSchema(commandesSchema);
     return wsdl11Definition;
   }
 
   @Bean
-  public XsdSchema annoncesSchema() {
-    return new SimpleXsdSchema(new ClassPathResource("annonce.xsd"));
+  public XsdSchema commandesSchema() {
+    return new SimpleXsdSchema(new ClassPathResource("commande.xsd"));
   }
 }

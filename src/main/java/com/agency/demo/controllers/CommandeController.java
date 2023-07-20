@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.agency.demo.entities.Annonce;
-import com.agency.demo.services.AnnonceService;
+import com.agency.demo.entities.Commande;
+import com.agency.demo.services.CommandeService;
 
 @RestController
-@RequestMapping("/api/v1/annonces")
-public class AnnonceController {
+@RequestMapping("/api/v1/commandes")
+public class CommandeController {
 
   @Autowired
-  AnnonceService annonceService;
+  CommandeService commandeservice;
 
   @GetMapping()
-  public ResponseEntity<List<Annonce>> handleGetAllAnnoncesRequest() {
-    List<Annonce> result = this.annonceService.findAll();
+  public ResponseEntity<List<Commande>> handleGetAllcommandesRequest() {
+    List<Commande> result = this.commandeservice.findAll();
     if (result.isEmpty()) {
       return new ResponseEntity<>(result, HttpStatus.NO_CONTENT);
     }
@@ -34,9 +34,9 @@ public class AnnonceController {
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
-  @GetMapping("/{annonceId}")
-  public ResponseEntity<Annonce> handleGetSingleAnnonceRequest(@PathVariable Long annonceId) {
-    Annonce result = this.annonceService.findById(annonceId);
+  @GetMapping("/{CommandeId}")
+  public ResponseEntity<Commande> handleGetSinglecommandeRequest(@PathVariable Long commandeId) {
+    Commande result = this.commandeservice.findById(commandeId);
     if (result == null) {
       return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
@@ -44,17 +44,17 @@ public class AnnonceController {
   }
 
   @PostMapping()
-  public ResponseEntity<Annonce> handleCreateAnnonceRequest(@RequestBody Annonce annonce) {
-    Annonce result = this.annonceService.save(annonce);
+  public ResponseEntity<Commande> handleCreateCommandeRequest(@RequestBody Commande Commande) {
+    Commande result = this.commandeservice.save(Commande);
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
-  @PutMapping(value = "/{annonceId}")
-  public ResponseEntity<Annonce> handleUpdateAnnonceRequest(
-      @PathVariable Long annonceId,
-      @RequestBody Annonce annonce) {
-    annonce.setId(annonceId);
-    Annonce result = this.annonceService.update(annonce);
+  @PutMapping(value = "/{commandeId}")
+  public ResponseEntity<Commande> handleUpdatecommandeRequest(
+      @PathVariable Long commandeId,
+      @RequestBody Commande commande) {
+    commande.setId(commandeId);
+    Commande result = this.commandeservice.update(commande);
     if (result == null) {
       return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
@@ -62,9 +62,9 @@ public class AnnonceController {
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
-  @DeleteMapping(value = "/{annonceId}")
-  public ResponseEntity<Annonce> handleDeleteAnnonceRequest(@PathVariable Long annonceId) {
-    this.annonceService.delete(annonceId);
+  @DeleteMapping(value = "/{commandeId}")
+  public ResponseEntity<Commande> handleDeletecommandeRequest(@PathVariable Long commandeId) {
+    this.commandeservice.delete(commandeId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }

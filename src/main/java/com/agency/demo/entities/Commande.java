@@ -1,5 +1,7 @@
 package com.agency.demo.entities;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,19 +16,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "annonces")
-public class Annonce {
+@Table(name = "commandes")
+public class Commande {
   @Id
   @GeneratedValue
-  @Column(name = "annonce_id")
+  @Column(name = "commande_id")
   private Long id;
-  private Double surface;
-  private Byte roomsNumber;
-  private String location;
-  private Double price;
-  private String photoUrl;
-  private String description;
-  private String phoneNumber;
-  private String operation;
-  private Boolean available;
+  private Date date;
+  private String modedepayment;
+
 }
